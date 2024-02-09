@@ -41,7 +41,7 @@ cd /opt/splunk/etc/system/local/
 ```
 #### Add below contents to server.conf file.
 ```bash
-cat server.conf
+vi server.conf
 ```
 ```bash
 [shclustering]
