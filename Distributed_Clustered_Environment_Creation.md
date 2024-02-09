@@ -48,6 +48,18 @@ vi server.conf
 pass4SymmKey = SoftManiaSHClusterKey
 shcluster_label = shcluster1
 ```
+#### Restart the Deployer.
+
+```bash
+/opt/splunk/bin/splunk restart
+```
+
+#### Open Server.conf file and copy the encrypted key to your notepad.
+
+```bash
+cat /opt/splunk/etc/system/local/server.conf
+```
+
 
 ### Search Head 1
 
@@ -57,7 +69,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH1_IP_OR_DNS:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP_OR_DNS:8089 -secret $7$aMKetwZ0mFh8KFzjDWgkHq4FNogO1hwPavKKAEu9TFWDqwXZLQ== -shcluster_label shcluster1
+./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH1_IP_OR_DNS:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP_OR_DNS:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
 
 ./splunk restart
 ```
@@ -69,7 +81,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH2_IP_OR_DNS:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP_OR_DNS:8089 -secret $7$aMKetwZ0mFh8KFzjDWgkHq4FNogO1hwPavKKAEu9TFWDqwXZLQ== -shcluster_label shcluster1
+./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH2_IP_OR_DNS:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP_OR_DNS:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
 
 ./splunk restart
 ```
@@ -81,7 +93,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH3_IP_OR_DNS:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP_OR_DNS:8089 -secret $7$aMKetwZ0mFh8KFzjDWgkHq4FNogO1hwPavKKAEu9TFWDqwXZLQ== -shcluster_label shcluster1
+./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH3_IP_OR_DNS:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP_OR_DNS:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
 
 ./splunk restart
 ```
@@ -108,5 +120,3 @@ cd /opt/splunk/bin
 ./splunk restart
 
 ```
-
-## Connect Forwarders with Deployment Server:
