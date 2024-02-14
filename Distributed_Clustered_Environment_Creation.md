@@ -23,7 +23,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk edit cluster-config -mode peer -manager_uri https://10.160.31.200:8089 -replication_port 9887 -secret your_key
+./splunk edit cluster-config -mode peer -manager_uri https://YOUR_CLUSTER_MANAGER_IP:8089 -replication_port 9887 -secret your_key
 
 ./splunk restart
 
@@ -69,7 +69,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH1_IP_OR_DNS:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP_OR_DNS:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
+./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH1_IP:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
 
 ./splunk restart
 ```
@@ -81,7 +81,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH2_IP_OR_DNS:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP_OR_DNS:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
+./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH2_IP:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
 
 ./splunk restart
 ```
@@ -93,7 +93,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH3_IP_OR_DNS:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP_OR_DNS:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
+./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH3_IP:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
 
 ./splunk restart
 ```
@@ -103,7 +103,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk bootstrap shcluster-captain -servers_list "https://52.199.82.244:8089,https://54.168.7.26:8089,https://54.168.97.221:8089" -auth admin:Rahuman@4314
+./splunk bootstrap shcluster-captain -servers_list "https://YOUR_SH1_IP:8089,https://YOUR_SH2_IP:8089,https://YOUR_SH3_IP:8089" -auth admin:YOUR_SH!_PASSWORD
 
 ```
 
@@ -115,7 +115,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk edit cluster-config -mode searchhead -master_uri https://18.139.109.202:8089 -secret Rahuman@4314 
+./splunk edit cluster-config -mode searchhead -master_uri https://YOUR_CLUSTER_MANAGER_IP:8089 -secret YOUR_SEARCH_HEAD_PASSWORD 
 
 ./splunk restart
 
@@ -132,7 +132,7 @@ sudo su - splunk
 
 cd /opt/splunkforwarder/bin
 
-./splunk set deploy-poll 18.183.220.125:8089
+./splunk set deploy-poll YOUR_DEPLOYMENT_SERVER_IP:8089
 
 ./splunk set default-hostname "Universal_Forwarder_1"
 
@@ -209,7 +209,7 @@ vi outputs.conf
 
 [indexer_discovery:manager1]
 pass4SymmKey = my_secret
-manager_uri = https://10.152.31.202:8089
+manager_uri = https://your_cluster_manager_ip:8089
 
 [tcpout:group1]
 autoLBFrequency = 30
