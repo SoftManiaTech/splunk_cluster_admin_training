@@ -120,3 +120,104 @@ cd /opt/splunk/bin
 ./splunk restart
 
 ```
+
+## Configure Deployment Server & Forwarders
+
+### Login to Universal Forwarder 1
+
+```bash
+sudo su - splunk
+
+/opt/splunkforwarder/bin/splunk status
+
+cd /opt/splunkforwarder/bin
+
+./splunk set deploy-poll 18.183.220.125:8089
+
+./splunk set default-hostname "Universal_Forwarder_1"
+
+./splunk set servername "Universal_Forwarder_1"
+
+./splunk restart
+
+```
+Note: Repeat the above steps in all your Universal Forwarders
+
+
+## Deploy Add-on to Universal Forwarders using Deployment Server
+
+### Upload the Addon package from your local/laptop to Deployment Server
+
+```bash
+cd /c/Users/yourusername/Downloads/
+
+scp -i "yourkey.pem" splunk-add-on-for-unix-and-linux_8100.tgz ec2-user@your_public_ip_or_dns:/tmp
+
+```
+
+### Extract the packageto the deployment bundle directory
+
+### Login to Deployment Server
+
+```bash
+sudo su 
+
+cd /tmp
+
+chown -R splunk:splunk splunk-add-on-for-unix-and-linux_8100.tgz
+
+sudo su - splunk
+
+tar -xvf splunk-add-on-for-unix-and-linux_8100.tgz -C /opt/splunk/etc/deployment-apps/
+
+cd /opt/splunk/etc/deployment-apps/
+
+```
+
+## Connect Forwarders with Indexer Cluster
+
+### Best Practice: Implement Indexer Discovery
+
+#### In Cluster Manager
+
+```bash
+sudo su - splunk
+
+cd /opt/splunk/etc/system/local/
+
+vi server.conf
+
+[indexer_discovery]
+pass4SymmKey = IndexerDiscoveryKey123
+polling_rate = 10
+indexerWeightByDiskCapacity = true
+
+/opt/splunk/bin/splunk restart
+
+```
+
+#### In Universal Forwarders
+
+```bash
+sudo su - splunk
+
+cd /opt/splunkforwarder/etc/system/local/
+
+ls
+
+vi outputs.conf
+
+[indexer_discovery:manager1]
+pass4SymmKey = my_secret
+manager_uri = https://10.152.31.202:8089
+
+[tcpout:group1]
+autoLBFrequency = 30
+forceTimebasedAutoLB = true
+indexerDiscovery = manager1
+useACK=true
+
+[tcpout]
+defaultGroup = group1
+
+```
