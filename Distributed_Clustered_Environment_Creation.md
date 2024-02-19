@@ -208,7 +208,7 @@ ls
 vi outputs.conf
 
 [indexer_discovery:manager1]
-pass4SymmKey = my_secret
+pass4SymmKey = IndexerDiscoveryKey123
 manager_uri = https://your_cluster_manager_ip:8089
 
 [tcpout:group1]
