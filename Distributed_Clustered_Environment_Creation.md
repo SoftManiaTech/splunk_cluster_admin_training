@@ -168,6 +168,8 @@ chown -R splunk:splunk splunk-add-on-for-unix-and-linux_8100.tgz
 
 sudo su - splunk
 
+cd /tmp/
+
 tar -xvf splunk-add-on-for-unix-and-linux_8100.tgz -C /opt/splunk/etc/deployment-apps/
 
 cd /opt/splunk/etc/deployment-apps/
