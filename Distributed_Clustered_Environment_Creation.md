@@ -222,4 +222,7 @@ useACK=true
 [tcpout]
 defaultGroup = group1
 
+cd /opt/splunkforwarder/bin/
+
+./splunk restart
 ```
