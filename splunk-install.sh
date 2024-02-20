@@ -12,11 +12,6 @@ useradd splunk
 echo
 echo "Splunk installed and splunk linux user created."
 echo
-echo "[settings]" > /opt/splunk/etc/system/local/web.conf
-echo "enableSplunkWebSSL = true" >> /opt/splunk/etc/system/local/web.conf
-echo
-echo "HTTPS enabled for Splunk Web using self-signed certificate."
-echo
 chown -R splunk:splunk /opt/splunk
 echo
 runuser -l splunk -c '/opt/splunk/bin/splunk start --accept-license --no-prompt --answer-yes --seed-passwd Pa55word'
