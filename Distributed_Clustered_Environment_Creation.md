@@ -115,7 +115,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk edit cluster-config -mode searchhead -master_uri https://YOUR_CLUSTER_MANAGER_IP:8089 -secret YOUR_SEARCH_HEAD_PASSWORD 
+./splunk edit cluster-config -mode searchhead -manager_uri https://YOUR_CLUSTER_MANAGER_IP:8089 -secret YOUR_INDEXER_CLUSTER_SECRET_KEY 
 
 ./splunk restart
 
