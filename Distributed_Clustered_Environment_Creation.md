@@ -37,6 +37,8 @@ cd /opt/splunk/bin
 
 ##### Navigate to system/local directory.
 ```bash
+sudo su - splunk
+
 cd /opt/splunk/etc/system/local/
 ```
 #### Add below contents to server.conf file.
@@ -69,7 +71,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH1_IP:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
+./splunk init shcluster-config -auth admin:YOUR_PASSWD -mgmt_uri https://SH1_IP:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
 
 ./splunk restart
 ```
@@ -81,7 +83,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH2_IP:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
+./splunk init shcluster-config -auth admin:YOUR_PASSWD -mgmt_uri https://SH2_IP:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
 
 ./splunk restart
 ```
@@ -93,7 +95,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk init shcluster-config -auth admin:Rahuman@4314 -mgmt_uri https://SH3_IP:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
+./splunk init shcluster-config -auth admin:YOUR_PASSWD -mgmt_uri https://SH3_IP:8089 -replication_port 9000 -replication_factor 3 -conf_deploy_fetch_url http://DEPLOYER_IP:8089 -secret pass_4_Symm_Key -shcluster_label shcluster1
 
 ./splunk restart
 ```
@@ -105,6 +107,7 @@ cd /opt/splunk/bin
 
 ./splunk bootstrap shcluster-captain -servers_list "https://YOUR_SH1_IP:8089,https://YOUR_SH2_IP:8089,https://YOUR_SH3_IP:8089" -auth admin:YOUR_SH!_PASSWORD
 
+./splunk show shcluster-status -auth admin:YOUR_SH!_PASSWORD
 ```
 
 ## Connect Search Head Cluster with Indexer Cluster
@@ -155,7 +158,7 @@ scp -i "yourkey.pem" splunk-add-on-for-unix-and-linux_8100.tgz ec2-user@your_pub
 
 ```
 
-### Extract the packageto the deployment bundle directory
+### Extract the package to the deployment bundle directory
 
 ### Login to Deployment Server
 
@@ -226,3 +229,4 @@ cd /opt/splunkforwarder/bin/
 
 ./splunk restart
 ```
+Repeat the same steps in all other Forwarders as well (Forwarder 2, etc.)
