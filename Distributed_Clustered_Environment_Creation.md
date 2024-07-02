@@ -9,7 +9,7 @@ sudo su - splunk
 
 cd /opt/splunk/bin
 
-./splunk edit cluster-config -mode manager -replication_factor 4 -search_factor 3 -secret your_key -cluster_label cluster1
+./splunk edit cluster-config -mode manager -replication_factor 3 -search_factor 2 -secret your_key -cluster_label cluster1
 
 ./splunk restart
 
