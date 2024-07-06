@@ -107,7 +107,7 @@ cd /opt/splunk/bin
 
 ./splunk bootstrap shcluster-captain -servers_list "https://YOUR_SH1_IP:8089,https://YOUR_SH2_IP:8089,https://YOUR_SH3_IP:8089" -auth admin:YOUR_SH!_PASSWORD
 
-./splunk show shcluster-status -auth admin:YOUR_SH!_PASSWORD
+./splunk show shcluster-status -auth admin:YOUR_SH1_PASSWORD
 ```
 
 ## Connect Search Head Cluster with Indexer Cluster
