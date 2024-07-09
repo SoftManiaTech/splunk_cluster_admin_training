@@ -110,6 +110,12 @@ cd /opt/splunk/bin
 ./splunk show shcluster-status -auth admin:YOUR_SH1_PASSWORD
 ```
 
+### Note: In case, you need to restart the search head cluster, Use rolling restart command.
+
+```bash
+splunk rolling-restart shcluster-members
+```
+
 ## Connect Search Head Cluster with Indexer Cluster
 
 ### Search Head 1, 2, 3
