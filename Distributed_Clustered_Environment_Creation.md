@@ -113,7 +113,7 @@ cd /opt/splunk/bin
 ### Note: In case, you need to restart the search head cluster, Use rolling restart command.
 
 ```bash
-splunk rolling-restart shcluster-members
+./splunk rolling-restart shcluster-members
 ```
 
 ## Connect Search Head Cluster with Indexer Cluster
