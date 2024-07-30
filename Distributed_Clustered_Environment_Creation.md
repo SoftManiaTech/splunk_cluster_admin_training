@@ -1,3 +1,10 @@
+## Prerequisite
+
+#### 1) You have 13 AWS EC2 instances (t2.medium) with minimum of 30 GB of EBS volume.
+
+#### 2) In 11 EC2 instances, install Splunk Enterprise 
+
+#### 3) In 2 EC2 instances, install Splunk Universal Forwarder
 
 ## Configure Indexer Cluster 
 
