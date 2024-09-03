@@ -9,7 +9,7 @@ cd /c/Users/murugan/Downloads/
 #### Copy the Apps/Add-ons package from your local laptop to Cluster Manager server backend
 
 ```bash
-scp -i "yourkey.pem" your_app_tar_file_name ec2-user@YOUR_CLUSTER_MANAGER_PUBLIC_IP:/tmp
+scp -i "yourkey.pem" your_app_tar_file_name.tgz ec2-user@YOUR_CLUSTER_MANAGER_PUBLIC_IP:/tmp
 ```
 
 #### Login to Cluster Manager backend using SSH
@@ -25,7 +25,7 @@ cd /tmp
 #### Change the ownership of the package
 
 ```bash
-chown -R splunk:splunk your_app_tar_file_name
+chown -R splunk:splunk your_app_tar_file_name.tgz
 ```
 
 #### Switch user to splunk & navigate to /tmp directory
@@ -39,7 +39,7 @@ cd /tmp
 #### Extract the package to the configuration bundle directory
 
 ```bash
-tar -xvf your_app_tar_file_name -C /opt/splunk/etc/manager-apps/ 
+tar -xvf your_app_tar_file_name.tgz -C /opt/splunk/etc/manager-apps/ 
 ```
 
 #### Navigate to the configuration bundle directory & check if the App folder is present
