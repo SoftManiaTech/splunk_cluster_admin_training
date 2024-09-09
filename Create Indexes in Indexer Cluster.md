@@ -7,7 +7,7 @@ sudo su - splunk
 ```
 Go to _cluster folder.
 ```bash
-cd /opt/splunk/etc/manager_apps/_cluster
+cd /opt/splunk/etc/manager-apps/_cluster
 ```
 Go to local folder inside _cluster directory.
 ```bash
