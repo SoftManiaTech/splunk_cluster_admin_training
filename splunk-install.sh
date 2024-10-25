@@ -2,12 +2,12 @@
 echo
 yum install wget -y
 cd /tmp
-wget -O splunk-9.2.2-d76edf6f0a15-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/9.2.2/linux/splunk-9.2.2-d76edf6f0a15-Linux-x86_64.tgz"
+wget -O splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz "https://download.splunk.com/products/splunk/releases/8.2.5/linux/splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz"
 echo
 echo "Splunk Downloaded."
 echo
-tar -xzvf /tmp/splunk-9.2.2-d76edf6f0a15-Linux-x86_64.tgz -C /opt
-rm -f /tmp/splunk-9.2.2-d76edf6f0a15-Linux-x86_64.tgz
+tar -xzvf /tmp/splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz -C /opt
+rm -f /tmp/splunk-8.2.5-77015bc7a462-Linux-x86_64.tgz
 useradd splunk
 echo
 echo "Splunk installed and splunk linux user created."
